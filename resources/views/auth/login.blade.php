@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', 'Login Admin | SD Cendekia Bangsa')
+@section('title', 'Login Admin | SDN LENTENG BARAT 1')
 
 @section('content')
     <div class="fade-in-page min-h-screen lg:grid lg:grid-cols-5">
@@ -12,7 +12,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3l8 4v6c0 5-3.4 7.8-8 8-4.6-.2-8-3-8-8V7l8-4z" />
                     </svg>
                 </div>
-                <h1 class="mt-8 text-4xl font-black">SD Cendekia Bangsa</h1>
+                <h1 class="mt-8 text-4xl font-black">SDN LENTENG BARAT 1</h1>
                 <p class="mt-4 max-w-md text-blue-100">"Pendidikan terbaik hari ini adalah investasi terbesar untuk masa depan bangsa."</p>
             </div>
         </aside>

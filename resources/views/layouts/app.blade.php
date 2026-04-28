@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'SD Cendekia Bangsa')</title>
-    <meta name="description" content="Landing page resmi SD Cendekia Bangsa.">
+    <title>@yield('title', 'SDN LENTENG BARAT 1')</title>
+    <meta name="description" content="Landing page resmi SDN LENTENG BARAT 1.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -64,16 +64,16 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.5 12l1.8 1.8 3.2-3.6" />
                             </svg>
                         </span>
-                        <span class="text-sm font-extrabold tracking-wide text-brand-navy dark:text-white sm:text-base">SD Cendekia Bangsa</span>
+                        <span class="text-sm font-extrabold tracking-wide text-brand-navy dark:text-white sm:text-base">SDN LENTENG BARAT 1</span>
                     </a>
 
                     <ul class="hidden items-center gap-6 text-sm font-semibold lg:flex">
-                        <li><a href="#beranda" class="hover:text-brand-electric">Beranda</a></li>
-                        <li><a href="#tentang" class="hover:text-brand-electric">Tentang</a></li>
-                        <li><a href="#fasilitas" class="hover:text-brand-electric">Fasilitas</a></li>
-                        <li><a href="#galeri" class="hover:text-brand-electric">Galeri</a></li>
-                        <li><a href="#pengumuman" class="hover:text-brand-electric">Pengumuman</a></li>
-                        <li><a href="#kontak" class="hover:text-brand-electric">Kontak</a></li>
+<li><a href="#beranda" class="nav-link hover:text-brand-electric">Beranda</a></li>
+<li><a href="#tentang" class="nav-link hover:text-brand-electric">Tentang</a></li>
+<li><a href="#fasilitas" class="nav-link hover:text-brand-electric">Fasilitas</a></li>
+<li><a href="#galeri" class="nav-link hover:text-brand-electric">Galeri</a></li>
+<li><a href="#pengumuman" class="nav-link hover:text-brand-electric">Pengumuman</a></li>
+<li><a href="#kontak" class="nav-link hover:text-brand-electric">Kontak</a></li>
                     </ul>
 
                     <div class="hidden items-center gap-3 lg:flex">
@@ -128,7 +128,7 @@
         <div class="mx-auto grid max-w-7xl gap-10 md:grid-cols-3">
             <div>
                 <h3 class="mb-4 text-lg font-bold text-white">Tentang Sekolah</h3>
-                <p class="text-sm leading-relaxed text-gray-400">SD Cendekia Bangsa berkomitmen membentuk peserta didik yang cerdas, berakhlak, dan siap menghadapi masa depan.</p>
+                <p class="text-sm leading-relaxed text-gray-400">SDN LENTENG BARAT 1 berkomitmen membentuk peserta didik yang cerdas, berakhlak, dan siap menghadapi masa depan.</p>
             </div>
             <div>
                 <h3 class="mb-4 text-lg font-bold text-white">Tautan Cepat</h3>
@@ -149,7 +149,7 @@
             </div>
         </div>
         <div class="mx-auto mt-12 max-w-7xl border-t border-slate-800 pt-6 text-center text-sm text-gray-500">
-            &copy; {{ date('Y') }} SD Cendekia Bangsa. All rights reserved.
+            &copy; {{ date('Y') }} SDN LENTENG BARAT 1. All rights reserved.
         </div>
     </footer>
 
@@ -211,6 +211,30 @@
         });
 
         AOS.init({ duration: 800, once: true, offset: 100 });
+
+        const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.clientHeight;
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            current = section.getAttribute("id");
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove("text-brand-electric", "font-bold");
+
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("text-brand-electric", "font-bold");
+        }
+    });
+});
     </script>
     @stack('scripts')
 </body>

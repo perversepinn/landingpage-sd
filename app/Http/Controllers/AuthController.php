@@ -23,7 +23,7 @@ class AuthController extends Controller
             'remember' => ['nullable', 'boolean'],
         ]);
 
-        $expectedEmail = env('ADMIN_EMAIL', 'admin@sdcontoh.sch.id');
+        $expectedEmail = env('ADMIN_EMAIL', 'laudan@black.com');
         $expectedPassword = env('ADMIN_PASSWORD', 'admin12345');
 
         if (
