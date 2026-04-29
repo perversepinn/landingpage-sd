@@ -25,7 +25,18 @@ class DashboardController extends Controller
 
     public function storeFacility(Request $request)
 {
-    Facility::create($request->only('nama', 'deskripsi'));
+    $path = null;
+
+    if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('facilities', 'public');
+    }
+
+    Facility::create([
+        'nama' => $request->nama,
+        'deskripsi' => $request->deskripsi,
+        'image' => $path
+    ]);
+
     return back()->with('success', 'Fasilitas berhasil ditambah')->with('tab', 'fasilitas');
 }
 
@@ -71,10 +82,19 @@ public function updateContact(Request $request)
 
 public function updateFacility(Request $request, $id)
 {
-    $f = Facility::findOrFail($id);
-    $f->update($request->only('nama', 'deskripsi'));
+    $facility = Facility::findOrFail($id);
 
-    return back()->with('success', 'Fasilitas diupdate')->with('tab', 'fasilitas');
+    if ($request->hasFile('image')) {
+        $path = $request->file('image')->store('facilities', 'public');
+        $facility->image = $path;
+    }
+
+    $facility->update([
+        'nama' => $request->nama,
+        'deskripsi' => $request->deskripsi,
+    ]);
+
+    return back()->with('success', 'Fasilitas berhasil diupdate')->with('tab', 'fasilitas');
 }
 
 public function deleteFacility($id)

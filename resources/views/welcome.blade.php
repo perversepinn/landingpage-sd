@@ -87,18 +87,24 @@ Kami tidak hanya fokus pada pencapaian akademik, tetapi juga pada pengembangan s
             <div class="mx-auto mt-4 h-1.5 w-28 rounded-full bg-brand-electric"></div>
             <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 @foreach ($facilities as $facility)
-                    <article class="group rounded-2xl border border-slate-700 bg-slate-800/70 p-6 shadow-lg transition duration-300 hover:-translate-y-2 hover:shadow-blue-500/50" data-aos="fade-up">
-                        <div class="mb-4 inline-flex rounded-xl bg-blue-500/20 p-3 text-blue-300">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 6v12m6-6H6" />
-                            </svg>
-                        </div>
-                        <h3>{{ $facility->nama }}</h3>
-<p class="mt-2 text-sm text-slate-300">
-    {{ $facility->deskripsi }}
-</p>
-                    </article>
-                @endforeach
+<article class="group overflow-hidden rounded-2xl border border-slate-700 bg-slate-800/70 shadow-lg transition duration-300 hover:-translate-y-2 hover:shadow-blue-500/50">
+
+    {{-- GAMBAR --}}
+    <div class="h-40 w-full overflow-hidden">
+        <img src="{{ $facility->image ? asset('storage/'.$facility->image) : 'https://via.placeholder.com/400x300' }}"
+             class="h-full w-full object-cover transition duration-300 group-hover:scale-110">
+    </div>
+
+    {{-- ISI --}}
+    <div class="p-5">
+        <h3 class="text-lg font-bold">{{ $facility->nama }}</h3>
+        <p class="mt-2 text-sm text-slate-300">
+            {{ $facility->deskripsi }}
+        </p>
+    </div>
+
+</article>
+@endforeach
             </div>
         </div>
     </section>

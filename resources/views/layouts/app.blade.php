@@ -4,6 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'SDN LENTENG BARAT 1')</title>
+<link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
+<link rel="apple-touch-icon" href="{{ asset('images/favicon.png') }}">
+<meta name="description" content="Landing page resmi SDN LENTENG BARAT 1.">
     <meta name="description" content="Landing page resmi SDN LENTENG BARAT 1.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,12 +61,11 @@
             <nav class="rounded-2xl border border-white/20 bg-white/80 px-4 py-3 shadow-lg backdrop-blur-md transition dark:border-slate-700/60 dark:bg-gray-900/80">
                 <div class="flex items-center justify-between">
                     <a href="#beranda" class="flex items-center gap-3">
-                        <span class="grid h-10 w-10 place-items-center rounded-xl bg-brand-electric text-white shadow-lg shadow-blue-500/30">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 3l8 4v6c0 5-3.4 7.8-8 8-4.6-.2-8-3-8-8V7l8-4z" />
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9.5 12l1.8 1.8 3.2-3.6" />
-                            </svg>
-                        </span>
+                        <span class="flex items-center justify-center">
+    <img src="{{ asset('images/logo.png') }}"
+         alt="Logo SDN Lenteng Barat 1"
+         class="h-10 w-10 rounded-full object-cover shadow-md">
+</span>
                         <span class="text-sm font-extrabold tracking-wide text-brand-navy dark:text-white sm:text-base">SDN LENTENG BARAT 1</span>
                     </a>
 

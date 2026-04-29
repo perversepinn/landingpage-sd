@@ -37,42 +37,73 @@
         {{-- CONTENT --}}
         <div class="mt-6">
 
-            {{-- ================= FASILITAS ================= --}}
-            @if($tab == 'fasilitas')
+{{-- ================= FASILITAS ================= --}}
+@if($tab == 'fasilitas')
 
-                <form method="POST" action="{{ route('facility.store') }}" class="mb-6 space-y-3">
-                    @csrf
-                    <input name="nama" required placeholder="Nama fasilitas" class="w-full border p-2 rounded">
-                    <textarea name="deskripsi" required placeholder="Deskripsi" class="w-full border p-2 rounded"></textarea>
-                    <button class="bg-blue-500 text-white px-4 py-2 rounded">Tambah</button>
-                </form>
-
-                @forelse($facilities as $f)
-<div class="border p-3 rounded mb-2">
-
-    <form method="POST" action="{{ route('facility.update', $f->id) }}" class="space-y-2">
+    {{-- FORM TAMBAH --}}
+    <form method="POST" action="{{ route('facility.store') }}" enctype="multipart/form-data" class="mb-6 space-y-3">
         @csrf
-        @method('PUT')
 
-        <input name="nama" value="{{ $f->nama }}" class="w-full border p-2 rounded">
-        <textarea name="deskripsi" class="w-full border p-2 rounded">{{ $f->deskripsi }}</textarea>
+        <input name="nama" required placeholder="Nama fasilitas"
+            class="w-full border p-2 rounded">
 
-        <button class="bg-yellow-500 text-white px-3 py-1 rounded">Update</button>
+        <textarea name="deskripsi" required placeholder="Deskripsi"
+            class="w-full border p-2 rounded"></textarea>
+
+        <label class="text-sm">Upload Gambar</label>
+        <input type="file" name="image" accept="image/*"
+            class="w-full border p-2 rounded">
+
+        <button class="bg-blue-500 text-white px-4 py-2 rounded">
+            Tambah
+        </button>
     </form>
 
-    <form method="POST" action="{{ route('facility.delete', $f->id) }}" class="mt-2">
-        @csrf
-        @method('DELETE')
-        <button class="bg-red-500 text-white px-3 py-1 rounded">Hapus</button>
-    </form>
+    {{-- LIST DATA --}}
+    @forelse($facilities as $f)
+        <div class="border p-3 rounded mb-4">
 
-</div>
-</div>
-                @empty
-                    <p>Tidak ada fasilitas</p>
-                @endforelse
-
+            {{-- PREVIEW GAMBAR --}}
+            @if($f->image)
+                <img src="{{ asset('storage/'.$f->image) }}"
+                     class="w-40 h-28 object-cover rounded mb-2">
             @endif
+
+            {{-- FORM UPDATE --}}
+            <form method="POST" action="{{ route('facility.update', $f->id) }}" enctype="multipart/form-data" class="space-y-2">
+                @csrf
+                @method('PUT')
+
+                <input name="nama" value="{{ $f->nama }}"
+                    class="w-full border p-2 rounded">
+
+                <textarea name="deskripsi"
+                    class="w-full border p-2 rounded">{{ $f->deskripsi }}</textarea>
+
+                <label class="text-sm">Ganti Gambar</label>
+                <input type="file" name="image" accept="image/*"
+                    class="w-full border p-2 rounded">
+
+                <button class="bg-yellow-500 text-white px-3 py-1 rounded">
+                    Update
+                </button>
+            </form>
+
+            {{-- DELETE --}}
+            <form method="POST" action="{{ route('facility.delete', $f->id) }}" class="mt-2">
+                @csrf
+                @method('DELETE')
+                <button class="bg-red-500 text-white px-3 py-1 rounded">
+                    Hapus
+                </button>
+            </form>
+
+        </div>
+    @empty
+        <p>Tidak ada fasilitas</p>
+    @endforelse
+
+@endif
 
 
             {{-- ================= PENGUMUMAN ================= --}}

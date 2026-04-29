@@ -8,6 +8,7 @@ class Facility extends Model
 {
     protected $fillable = [
         'nama',
-        'deskripsi'
+        'deskripsi',
+        'image'
     ];
 }
